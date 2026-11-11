@@ -26,3 +26,7 @@ data/
 # Temporary files
 .DS_Store
 Thumbs.db
+
+# A2 training outputs
+a2/student/results/
+*.weights

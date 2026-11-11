@@ -5,7 +5,7 @@
 ## Assignments
 
 - **Assignment 1: Exploring Word Vectors** — 已完成
-- **Assignment 2: Neural Dependency Parsing** — 核心编程部分已完成
+- **Assignment 2: Neural Dependency Parsing** — 核心编程部分已完成，数学推导部分未上传
 
 ## Assignment 2: Neural Dependency Parsing
 

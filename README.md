@@ -5,8 +5,8 @@
 ## Assignments
 
 - **Assignment 1: Exploring Word Vectors** — 已完成
-- **Assignment 2: Neural Dependency Parsing** — 已完成 1(a)–(c)、2(a)–(b)、3(a)–(e)；数学推导记录于个人笔记，未上传 GitHub
-- **Assignment 3: Neural Machine Translation** — 已完成 Part (a)；Part (b) 未完成
+- **Assignment 2: Neural Dependency Parsing** — 已完成 1(a)–(c)、2(a)–(b)、3(a)–(e)；数学推导记录于个人笔记，未上传
+- **Assignment 3: Neural Machine Translation** — 已完成 Part (a)
 
 ## Assignment 2: Neural Dependency Parsing
 
@@ -82,7 +82,7 @@
 
 ### Notes
 
-- 已完成 Assignment 3 Part (a)，Part (b) 未完成。
+- 已完成 Assignment 3 Part (a)。
 - 模型训练和测试在 Google Colab 上完成，最终测试集 Corpus BLEU 为 **20.21**，达到作业要求（BLEU > 18）。
 - 本仓库保留本地 PyCharm 中的代码实现。Colab 中针对模型配置、训练环境和 Checkpoint 恢复的部分修改未同步至本地，因此本地代码与实际训练配置并不完全一致。
 - 未上传训练模型权重、优化器状态文件及 Colab Notebook。

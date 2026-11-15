@@ -30,3 +30,15 @@ Thumbs.db
 # A2 training outputs
 a2/student/results/
 *.weights
+
+# A3 virtual environment
+.venv-a3/
+
+# A3 training outputs
+a3/student/runs/
+a3/student/outputs/
+a3/student/model.bin.optim
+
+# A3 datasets
+a3/student/zh_en_data/
+a3/student/sanity_check_en_es_data/

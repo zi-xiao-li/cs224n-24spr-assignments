@@ -1,3 +1,4 @@
+
 # Stanford CS224n — Spring 2024 Assignments
 
 本仓库用于记录学习 Stanford CS224n: Natural Language Processing with Deep Learning（Spring 2024）的过程，包括课程作业、代码实现和实验分析。
@@ -6,7 +7,8 @@
 
 - **Assignment 1: Exploring Word Vectors** — 已完成
 - **Assignment 2: Neural Dependency Parsing** — 已完成 1(a)–(c)、2(a)–(b)、3(a)–(e)；数学推导记录于个人笔记，未上传
-- **Assignment 3: Neural Machine Translation** — 已完成 Part (a)
+- **Assignment 3: Neural Machine Translation** — 已完成 Part (a) 及模型训练与评估
+- **Assignment 4: Self-Attention, Transformers, and Pretraining** — 已完成
 
 ## Assignment 2: Neural Dependency Parsing
 
@@ -82,10 +84,67 @@
 
 ### Notes
 
-- 已完成 Assignment 3 Part (a)。
 - 模型训练和测试在 Google Colab 上完成，最终测试集 Corpus BLEU 为 **20.21**，达到作业要求（BLEU > 18）。
 - 本仓库保留本地 PyCharm 中的代码实现。Colab 中针对模型配置、训练环境和 Checkpoint 恢复的部分修改未同步至本地，因此本地代码与实际训练配置并不完全一致。
 - 未上传训练模型权重、优化器状态文件及 Colab Notebook。
+
+## Assignment 4: Self-Attention, Transformers, and Pretraining
+
+### Implementation
+
+- 基于课程提供的 minGPT 框架，实现并训练 Character-level GPT 语言模型。
+- 实现 Span Corruption 数据集，包括随机截断、Span Masking、特殊字符处理及输入与目标序列构建。
+- 使用 Wikipedia 文本语料进行自监督预训练，并在人物出生地预测任务上进行 Fine-tuning。
+- 实现 Rotary Position Embeddings（RoPE），包括旋转角度预计算、复数形式的旋转操作，以及在 Multi-head Causal Self-Attention 中对 Query 和 Key 应用 RoPE。
+- 对比无预训练 Vanilla GPT、预训练 Vanilla GPT 和 RoPE GPT 的预测性能。
+- 实现 London Baseline，并在开发集上评估模型准确率。
+
+### Experimental Results
+
+| Model | Dev Accuracy | Correct Predictions |
+|---|---:|---:|
+| Vanilla GPT (Without Pretraining) | 1.8% | 9/500 |
+| London Baseline | 5.0% | 25/500 |
+| Vanilla GPT (Pretrained + Fine-tuned) | 20.8% | 104/500 |
+| **RoPE GPT (Pretrained + Fine-tuned)** | **28.6%** | **143/500** |
+
+### Training Configuration
+
+| Metric | Result |
+|---|---|
+| Framework | PyTorch |
+| Training Platform | Google Colab |
+| GPU | NVIDIA Tesla T4 |
+| Pretraining Corpus | Wikipedia-derived Text |
+| Fine-tuning Task | Birthplace Prediction |
+| Context Length | 128 |
+| Transformer Layers | 4 |
+| Attention Heads | 8 |
+| Embedding Dimension | 256 |
+| Pretraining Epochs | 650 |
+| Fine-tuning Epochs (Pretrained Models) | 10 |
+| Evaluation Metric | Exact-match Accuracy |
+
+### Key Learnings
+
+- GPT Architecture 与 Causal Self-Attention
+- Multi-head Attention 与 Causal Masking
+- Character-level Autoregressive Language Modeling
+- Span Corruption 与 Self-supervised Pretraining
+- Pretraining 与 Fine-tuning 的区别
+- Rotary Position Embeddings（RoPE）及相对位置信息编码
+- PyTorch Tensor Reshape、Broadcasting 与 Complex Tensor Operations
+- GPU Training、Checkpoint 保存与模型评估
+- Pretrained Knowledge、Hallucination 与模型预测可靠性
+
+### Notes
+
+- Vanilla GPT 和 RoPE GPT 均完成 650 epochs 预训练及 10 epochs 微调。
+- RoPE GPT 在开发集上取得 **28.6%** 的准确率，相比预训练 Vanilla GPT 的 **20.8%** 提高 **7.8 个百分点**。
+- 已生成开发集和测试集预测文件。测试集真实标签未公开，因此不报告测试集准确率。
+- 模型训练、微调和评估在 Google Colab 上完成。
+- 预训练权重、微调权重及预测结果已备份至 Google Drive，未上传至 GitHub。
+- 本仓库主要保留 A4 的 Python 源代码实现。
 
 ## Tech Stack
 
@@ -105,4 +164,4 @@
 
 本仓库为个人学习记录，非 Stanford 官方课程仓库。
 
-Assignment 2 和 Assignment 3 的实现基于课程提供的作业框架。实验结果来自个人运行，其中 Assignment 3 的模型训练和测试在 Google Colab 上完成。
+Assignment 2、Assignment 3 和 Assignment 4 的实现基于课程提供的作业框架。实验结果来自个人运行，其中 Assignment 3 和 Assignment 4 的模型训练与评估主要在 Google Colab 上完成。

@@ -163,5 +163,3 @@
 ## Note
 
 本仓库为个人学习记录，非 Stanford 官方课程仓库。
-
-Assignment 2、Assignment 3 和 Assignment 4 的实现基于课程提供的作业框架。实验结果来自个人运行，其中 Assignment 3 和 Assignment 4 的模型训练与评估主要在 Google Colab 上完成。

@@ -42,3 +42,11 @@ a3/student/model.bin.optim
 # A3 datasets
 a3/student/zh_en_data/
 a3/student/sanity_check_en_es_data/
+
+# A4 training outputs
+a4/student/expt/
+*.params
+*.predictions
+
+# Additional virtual environments
+.venv-*/
